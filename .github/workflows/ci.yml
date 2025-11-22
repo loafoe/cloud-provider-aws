@@ -22,7 +22,7 @@ jobs:
           go-version: 1.25
       - name: Build binary
         shell: bash
-        run: make all
+        run: make ecr-credential-provider-linux-amd64 ecr-credential-provider-linux-arm64
       - name: Output
         if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v4
@@ -60,6 +60,5 @@ jobs:
           files: |
             out/ecr-credential-provider-amd64
             out/ecr-credential-provider-arm64
-            out/ecr-credential-provider.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # You don't need to add this in secrets it's by default.      
