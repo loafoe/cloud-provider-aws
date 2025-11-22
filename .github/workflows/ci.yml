@@ -57,13 +57,17 @@ jobs:
       - name: Download amd64 binaries
         uses: actions/download-artifact@v4
         with:
-          name: ecr-credential-provider-linux-amd64
-          path: ecr-credential-provider-linux-amd64 
+          name: ecr-credential-provider-linux-amd64 
       - name: Download arm64 binaries
         uses: actions/download-artifact@v4
         with:
-          name: ecr-credential-provider-linux-arm64
-          path: ecr-credential-provider-linux-arm64 
+          name: ecr-credential-provider-linux-arm64 
+
+      - name: Prepare release tag
+        id: prep
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
 
       - name: Release
         uses: softprops/action-gh-release@v1
