@@ -72,7 +72,7 @@ jobs:
           name: Release ${{ steps.prep.outputs.tag }}
           draft: false
           files: |
-            ecr-credential-provider-amd64
-            ecr-credential-provider-arm64
+            ecr-credential-provider-linux-arm64
+            ecr-credential-provider-linux-amd64
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # You don't need to add this in secrets it's by default.      
